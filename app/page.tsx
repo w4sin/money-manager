@@ -1,39 +1,25 @@
 "use client";
-import Image from "next/image";
-import IconLogin from "../public/icons/login.svg";
-import Input from "./components/Input";
+import { submitForm } from "./action";
+import GoogleButton from "./components/google/google-button";
+import LineButton from "./components/line-button";
 
 export default function Home() {
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    console.log("email : ", formData.get("email"));
-  };
-
   return (
     <main className="min-h-screen min-w-screen overflow-hidden bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="w-full h-screen flex justify-center items-center">
-        <div className="w-full md:w-[500px] rounded-xl shadow-2xl/20 border border-gray-300 bg-white/95 px-3 py-10 md:p-10 mx-2">
-          <form onSubmit={onSubmit} className="flex flex-col space-y-4">
-            <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <div className="w-full max-w-[500px] md:w-[500px] rounded-xl shadow-2xl/20 border border-gray-300 bg-white/95 px-3 py-10 md:px-10 md:py-8 mx-2">
+          <form action={submitForm} className="flex flex-col space-y-4">
+            <h2
+              className="text-2xl font-bold mb-6 text-center text-primary"
 
-            <Input label="Username" name="username" error={!!false} fullWidth />
-            <Input label="Password" name="password" type="password" error={!!false} fullWidth />
-
-            <button
-              type="submit"
-              className="btn btn-lg btn-primary rounded-lg mt-5"
+              // bg-gradient-to-br from-[#165af8] via-[#60d3c0] to-[#b3bb59] bg-clip-text text-transparent"
             >
-              <Image
-                src={IconLogin}
-                alt="login icon"
-                width={24}
-                height={24}
-                className="mr-0.5 invert-100 brightness-100"
-                priority
-              />
-              Login
-            </button>
+              Money Manager
+            </h2>
+
+            <GoogleButton name="provider" value="google" type="submit" />
+
+            <LineButton name="provider" value="line" type="submit" />
           </form>
         </div>
       </div>

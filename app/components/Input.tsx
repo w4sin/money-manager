@@ -33,7 +33,9 @@ const Input = ({
           className={`
             absolute left-3
             ${
-              focused || controlledValue ? "top-0 text-xs" : "top-1/2 text-base"
+              focused || controlledValue
+                ? "top-0 text-xs bg-white"
+                : "top-1/2 text-base bg-transparent"
             }
             ${
               error
@@ -45,7 +47,7 @@ const Input = ({
             pointer-events-none
             transform -translate-y-1/2
             transition-all duration-200
-            bg-white px-1
+            px-1
           `}
         >
           {label}
